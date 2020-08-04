@@ -1,0 +1,13 @@
+[package]
+name = "twitter-bot"
+version = "0.1.0"
+authors = ["Gabriele <gabriele.belluardo@outlook.it>"]
+edition = "2018"
+
+[dependencies]
+chrono = "0.4.13"
+dotenv = "0.15.0"
+egg-mode = { version = "0.15", features = ["rustls"], default-features = false }
+reqwest = "0.10.7"
+rss = "1.9.0"
+tokio = {version ="0.2.22", features = ["macros"]}

@@ -1,6 +1,6 @@
 use chrono::prelude::*;
 use dotenv;
-use egg_mode::{tweet::DraftTweet, KeyPair, Token};
+use egg_mode::{auth, tweet, KeyPair, Token};
 use rss::Channel;
 
 use std::time::Duration;
@@ -62,7 +62,7 @@ async fn last_tweet(t: &Token) -> Result<Date> {
 
 async fn publish(t: &Token, post: &Post, log: bool) -> Result<()> {
     let text = format!("Nuovo post - {}\n{}", post.title, post.url);
-    DraftTweet::new(text.clone()).send(t).await?;
+    tweet::DraftTweet::new(text.clone()).send(t).await?;
     if log {
         println!("{:#?}", text);
     }
@@ -84,7 +84,7 @@ async fn get_token() -> Result<Token> {
 }
 
 async fn verify_tokens(t: &Token, log: bool) -> Result<()> {
-    let respose = egg_mode::auth::verify_tokens(t).await?;
+    let respose = auth::verify_tokens(t).await?;
     if log {
         println!("{:#?}", respose);
     }

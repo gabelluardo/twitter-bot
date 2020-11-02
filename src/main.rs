@@ -51,7 +51,8 @@ async fn last_post(rss: &str) -> Result<Post> {
 }
 
 async fn last_tweet(t: &Token) -> Result<Date> {
-    let tl = egg_mode::tweet::home_timeline(&t);
+    let user_id = dotenv::var("USER_ID")?;
+    let tl = egg_mode::tweet::user_timeline(user_id, false, false, &t);
     let (_, feed) = tl.start().await?;
 
     let tweet = feed.response.first().unwrap();

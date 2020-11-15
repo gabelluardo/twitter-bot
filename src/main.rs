@@ -84,7 +84,7 @@ struct Post {
 #[tokio::main]
 async fn main() -> Result<()> {
     let args = Args::parse();
-    dbg!(&args);
+
     let token = get_token(args.clone()).await?;
     verify_tokens(&token, args.log).await?;
 

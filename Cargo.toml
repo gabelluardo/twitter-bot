@@ -15,6 +15,7 @@ chrono = "0.4"
 dotenv = "0.15"
 reqwest = "0.10"
 rss = "1.9"
+structopt = "0.3"
 
 [dependencies.egg-mode]
 version = "0.15"

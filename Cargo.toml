@@ -13,18 +13,18 @@ license = "MIT"
 [dependencies]
 chrono = "0.4"
 dotenv = "0.15"
-reqwest = "0.10"
-rss = "1.9"
+reqwest = "0.11"
+rss = "1"
 structopt = "0.3"
 
 [dependencies.egg-mode]
-version = "0.15"
+git = "https://github.com/gabelluardo/egg-mode"
 features = ["rustls"]
 default-features = false
 
 [dependencies.tokio]
-version ="0.2.22"
-features = ["macros"]
+version = "1"
+features = ["full"]
 
 [package.metadata.release]
 no-dev-version = true

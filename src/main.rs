@@ -85,6 +85,9 @@ struct Post {
 async fn main() -> Result<()> {
     let args = Args::parse();
 
+    // Execute a task every 2 hours
+    let mut interval = tokio::time::interval(Duration::from_secs(2 * 60 * 60));
+
     let token = get_token(args.clone()).await?;
     verify_tokens(&token, args.log).await?;
 
@@ -98,8 +101,8 @@ async fn main() -> Result<()> {
                 if post.date > last_tweet_date {
                     publish(&token, &post, false).await?;
                 }
-                // sleep for 2 hours
-                tokio::time::delay_for(Duration::from_secs(2 * 60 * 60)).await
+
+                interval.tick().await;
             }
         }
         _ => Ok(eprintln!("Unable to parse RSS and USER_ID")),

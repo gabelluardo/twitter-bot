@@ -23,7 +23,7 @@ features = ["rustls"]
 default-features = false
 
 [dependencies.tokio]
-version ="0.2.22"
+version ="1.8.4"
 features = ["macros"]
 
 [package.metadata.release]
